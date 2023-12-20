@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Bitácora</h2>
+    <br>
+    <p-table [value]="bitacora" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Servicio</th>
+                <th>Fecha de consulta</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-b>
+            <tr>
+                <td>{{ b.idBit }}</td>
+                <td>{{ b.servicio }}</td>
+                <td>{{ b.fechaReg | date: 'dd/MM/yyyy HH:mm' }}</td>
+            </tr>
+        </ng-template>
+    </p-table>

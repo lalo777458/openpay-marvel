@@ -1,0 +1,144 @@
+<div class="container">
+    <h2>Marvel</h2>
+    <br>
+    <p-table [value]="characters" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>resourceURI</th>
+                <th>description</th>
+                <th>modified</th>
+                <th>Información</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-mar>
+            <tr>
+                <td>{{ mar.id }}</td>
+                <td>{{ mar.name }}</td>
+                <td>{{ mar.resourceURI }}</td>
+                <td>{{ mar.description }}</td>
+                <td>{{ mar.modified }}</td>
+                <td>
+                    <p-button icon="bx bxs-file-export bx-md" [rounded]="true" [text]="true" severity="info"
+                        pTooltip="Ver información" (click)="verInformacion(mar.id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+
+
+
+
+</div>
+
+<p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '70vw' }" [draggable]="true" [resizable]="true">
+    <ng-template pTemplate="header">
+        <strong class="text-lg font-bold"> {{title}}</strong>
+    </ng-template>
+
+
+    <p class="m-0">
+
+    <div *ngFor="let value of characterId; index as key">
+        Id: {{value.id}}
+        <br>
+        description: {{value.description}}
+        <br>
+        modified: {{value.modified}}
+        <br>
+        <div class="container">
+            <strong>thumbnail </strong>
+            <br>
+            path: {{value.thumbnail.path}}
+            <br>
+            extension: {{value.thumbnail.extension}}
+        </div>
+        resourceURI: {{value.resourceURI}}
+        <br>
+        <div class="container">
+            <strong>comics </strong><br>
+            available: {{value.comics.available}}
+            <br>
+            collectionURI: {{value.comics.collectionURI}}
+        </div>
+        <div class="container">
+            <strong>items </strong><br>
+            <div class="col-sm-12" *ngFor="let key of value.comics.items | valueOptionsPipe">
+                resourceURI: {{key.resourceURI}}
+                <br>
+                name: {{key.name}}
+            </div>
+        </div>
+        returned: {{value.comics.returned}}
+        <br>
+        <strong>series</strong>
+        <br>
+        available: {{value.series.available}}
+        <br>
+        collectionURI: {{value.series.collectionURI}}
+        <div class="container">
+            <strong>items </strong><br>
+            <div class="col-sm-12" *ngFor="let key of value.series.items | valueOptionsPipe">
+                resourceURI: {{key.resourceURI}}
+                <br>
+                name: {{key.name}}
+            </div>
+        </div>
+        returned: {{value.series.returned}}
+
+
+
+        <br>
+        <strong>stories</strong>
+        <br>
+        available: {{value.stories.available}}
+        <br>
+        collectionURI: {{value.stories.collectionURI}}
+        <div class="container">
+            <strong>items </strong><br>
+            <div class="col-sm-12" *ngFor="let key of value.stories.items | valueOptionsPipe">
+                resourceURI: {{key.resourceURI}}
+                <br>
+                name: {{key.name}}
+                <br>
+                type: {{key.type}}
+            </div>
+        </div>
+        returned: {{value.stories.returned}}
+
+
+
+        <br>
+        <strong>events</strong>
+        <br>
+        available: {{value.events.available}}
+        <br>
+        collectionURI: {{value.events.collectionURI}}
+        <div class="container">
+            <strong>items </strong><br>
+            <div class="col-sm-12" *ngFor="let key of value.events.items | valueOptionsPipe">
+                resourceURI: {{key.resourceURI}}
+                <br>
+                name: {{key.name}}
+            </div>
+        </div>
+        returned: {{value.events.returned}}
+
+        <br>
+        <strong>urls</strong>
+        <div class="container">
+            <strong>items </strong><br>
+            <div class="col-sm-12" *ngFor="let key of value.urls | valueOptionsPipe">
+                resourceURI: {{key.ype}}
+                <br>
+                name: {{key.url}}
+            </div>
+        </div>
+        returned: {{value.urls.returned}}
+
+
+    </div>
+</p-dialog>
